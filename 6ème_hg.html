@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>6ème - Histoire Géo</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <style>
+
+        *{
+            box-sizing: border-box;
+        }
+
+        body{
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+
+            overflow-x: hidden;
+
+            opacity: 0;
+            transform: translateY(20px) scale(0.98);
+            animation: pageFade 1s ease forwards;
+        }
+
+        @keyframes pageFade {
+
+            to{
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+
+        }
+
+        /* HEADER */
+
+        header{
+            background-color: #0b3d91;
+            color: white;
+
+            text-align: center;
+
+            padding: 30px 20px;
+
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        header h1{
+
+            background: gold;
+
+            color: black;
+
+            display: inline-block;
+
+            padding: 12px 25px;
+
+            border-radius: 12px;
+
+            margin-bottom: 10px;
+        }
+
+        header p{
+            font-size: 18px;
+        }
+
+        /* TITRES */
+
+        h2{
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        /* CONTAINER */
+
+        .container{
+            display: flex;
+
+            flex-wrap: wrap;
+
+            justify-content: center;
+
+            gap: 30px;
+
+            padding: 30px;
+        }
+
+        /* BLOCS */
+
+        .histoire,
+        .geographie{
+
+            width: 100%;
+            max-width: 1200px;
+
+            border-radius: 20px;
+
+            padding: 25px;
+
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .histoire{
+            background-color: #eef2ff;
+        }
+
+        .geographie{
+            background-color: #e8f8f5;
+        }
+
+        /* LEÇONS */
+
+        .lecon{
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            background: white;
+
+            padding: 20px;
+
+            width: 240px;
+            min-height: 120px;
+
+            border-radius: 18px;
+
+            text-decoration: none;
+
+            color: black;
+
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+
+            transition: 0.3s;
+
+            font-weight: 500;
+        }
+
+        .lecon:hover{
+
+            transform: translateY(-8px) scale(1.02);
+
+            background: gold;
+
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width:768px){
+
+            header{
+                padding: 25px 15px;
+            }
+
+            header h1{
+                font-size: 28px;
+            }
+
+            header p{
+                font-size: 16px;
+            }
+
+            h2{
+                font-size: 24px;
+                padding: 0 10px;
+            }
+
+            .container{
+                flex-direction: column;
+                align-items: center;
+
+                padding: 20px;
+
+                gap: 20px;
+            }
+
+            .histoire,
+            .geographie{
+                padding: 20px 15px;
+            }
+
+            .lecon{
+                width: 100%;
+                min-height: 100px;
+
+                font-size: 15px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+<script>
+
+const connected = localStorage.getItem("connected");
+
+if(connected !== "true"){
+
+    alert("Inscris-toi d'abord 🔒");
+
+    window.location.href = "signup.html";
+}
+
+</script>
+<header>
+
+    <h1>Classe de 6ème</h1>
+
+    <p>Choisis une leçon</p>
+
+</header>
+
+<h2>📚 Leçons disponibles</h2>
+
+<section class="container">
+
+    <!-- HISTOIRE -->
+
+    <div class="histoire">
+
+        <h2>🏛️ Histoire</h2>
+
+        <section class="container">
+
+            <a href="6_L1.html" class="lecon">
+                L'histoire et son objet
+            </a>
+
+            <a href="6_LH2.html" class="lecon">
+                Les sources de l'histoire
+            </a>
+
+            <a href="6_LH3.html" class="lecon">
+                Les sources d'information et la dignité humaine en temps de guerre ou de violence
+            </a>
+
+            <a href="6_LH4.html" class="lecon">
+                La notion de chronologie
+            </a>
+
+            <a href="6_LH5.html" class="lecon">
+                Les grandes périodes de l'histoire
+            </a>
+
+            <a href="6_LH6.html" class="lecon">
+                Le paléolithique ivoirien
+            </a>
+
+            <a href="6_LH7.html" class="lecon">
+                La révolution du néolitique en Côte-d'Ivoire
+            </a>
+
+            <a href="6_LH8.html" class="lecon">
+                La métallurgie du fer en Côte-d'Ivoire
+            </a>
+
+        </section>
+
+    </div>
+
+    <!-- GÉOGRAPHIE -->
+
+    <div class="geographie">
+
+        <h2>🌍 Géographie</h2>
+
+        <section class="container">
+
+            <a href="6_LG1.html" class="lecon">
+                La géographie et son objet
+            </a>
+
+            <a href="6_LG2.html" class="lecon">
+                Le relief
+            </a>
+
+            <a href="6_LG3.html" class="lecon">
+                🌦️ Le climat
+            </a>
+
+            <a href="6_LG4.html" class="lecon">
+                L'interrelation entre les sols, le climat et la végétation
+            </a>
+
+            <a href="6_LG5.html" class="lecon">
+                Les moyens de représentation de la terre
+            </a>
+
+            <a href="6_LG6.html" class="lecon">
+                Les mouvements de la terre et leur influence sur la vie quotidienne
+            </a>
+
+            <a href="6_LG7.html" class="lecon">
+                Population et environnement local
+            </a>
+
+            <a href="6_LG8.html" class="lecon">
+                L'homme et le cycle de l'eau
+            </a>
+
+            <a href="6_LG9.html" class="lecon">
+                L'importance de l'impôt dans le développement de ma région
+            </a>
+
+        </section>
+
+    </div>
+
+</section>
+
+</body>
+
+</html>

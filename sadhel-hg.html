@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Sadhel IA</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:"Segoe UI",sans-serif;
+
+    background:#f3f6fb;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    min-height:100vh;
+
+    padding:10px;
+}
+
+#container{
+
+    display:flex;
+
+    width:900px;
+
+    height:95vh;
+
+    background:white;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* SIDEBAR */
+
+#sidebar{
+
+    width:260px;
+
+    background:#859bbb;
+
+    color:white;
+
+    padding:12px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    overflow-y:auto;
+}
+
+.new-chat-btn{
+
+    padding:10px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:linear-gradient(
+    135deg,
+    #fbbf24,
+    #f59e0b
+    );
+
+    color:white;
+
+    cursor:pointer;
+
+    margin-bottom:10px;
+
+    font-weight:bold;
+}
+
+.chat-item{
+
+    padding:10px;
+
+    border-radius:10px;
+
+    background:rgba(255,255,255,0.08);
+
+    margin-bottom:6px;
+
+    cursor:pointer;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+}
+
+.rename-btn{
+
+    font-size:12px;
+
+    cursor:pointer;
+}
+
+/* APP */
+
+#app{
+
+    flex:1;
+
+    display:flex;
+
+    flex-direction:column;
+
+    background:#f9fafb;
+}
+
+#header{
+
+    padding:14px;
+
+    background:white;
+
+    border-bottom:1px solid #e5e7eb;
+
+    font-weight:bold;
+
+    text-align:center;
+}
+
+#chat{
+
+    flex:1;
+
+    overflow-y:auto;
+
+    padding:15px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+}
+
+.msg{
+
+    max-width:70%;
+
+    padding:10px 14px;
+
+    border-radius:14px;
+
+    font-size:14px;
+
+    word-wrap:break-word;
+}
+
+.user{
+
+    align-self:flex-end;
+
+    background:royalblue;
+
+    color:white;
+}
+
+.bot{
+
+    align-self:flex-start;
+
+    background:#e5e7eb;
+
+    color:#111827;
+}
+
+/* INPUT */
+
+#inputBar{
+
+    display:flex;
+
+    padding:10px;
+
+    border-top:1px solid #e5e7eb;
+
+    background:white;
+}
+
+#input{
+
+    flex:1;
+
+    padding:10px;
+
+    border-radius:10px;
+
+    border:1px solid #d1d5db;
+
+    outline:none;
+}
+
+.send-btn{
+
+    width:50px;
+
+    height:50px;
+
+    margin-left:8px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:linear-gradient(
+    135deg,
+    gold,
+    rgb(255,228,78)
+    );
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    font-weight:bold;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    #container{
+
+        flex-direction:column;
+
+        width:100%;
+
+        height:95vh;
+    }
+
+    #sidebar{
+
+        width:100%;
+
+        flex-direction:row;
+
+        overflow-x:auto;
+
+        overflow-y:hidden;
+    }
+
+    .chat-item{
+
+        min-width:120px;
+    }
+
+    .msg{
+
+        max-width:85%;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="container">
+
+    <!-- SIDEBAR -->
+
+    <div id="sidebar">
+
+        <button
+        class="new-chat-btn"
+        onclick="newChat()">
+
+        ➕ Nouveau chat
+
+        </button>
+
+        <div id="chatList"></div>
+
+    </div>
+
+    <!-- APP -->
+
+    <div id="app">
+
+        <div id="header">
+
+        🤖 Sadhel IA
+
+        </div>
+
+        <div id="chat"></div>
+
+        <div id="inputBar">
+
+            <input
+            id="input"
+            placeholder="Écris à Sadhel...">
+
+            <button
+            class="send-btn"
+            onclick="send()">
+
+            ➤
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+const chat =
+document.getElementById("chat");
+
+const chatList =
+document.getElementById("chatList");
+
+let chats =
+JSON.parse(
+localStorage.getItem("sadhel_chats")
+) || {};
+
+let currentChat = null;
+
+/* NEW CHAT */
+
+function newChat(){
+
+    const id =
+    Date.now().toString();
+
+    chats[id] = {
+
+        title:
+        "Chat " +
+        (Object.keys(chats).length + 1),
+
+        messages:[
+
+            {
+
+                role:"system",
+
+                content:
+                "Tu es Sadhel, un assistant intelligent et gentil."
+
+            },
+
+            {
+
+                role:"assistant",
+
+                content:
+                "Salut 👋 Je suis Sadhel, ton assistant pour tes cours d'histoire et de géographie. Comment puis-je t'aider ?"
+
+            }
+
+        ]
+
+    };
+
+    saveChats();
+
+    switchChat(id);
+
+}
+
+/* SWITCH */
+
+function switchChat(id){
+
+    currentChat = id;
+
+    renderChat();
+
+}
+
+/* SAVE */
+
+function saveChats(){
+
+    localStorage.setItem(
+
+        "sadhel_chats",
+
+        JSON.stringify(chats)
+
+    );
+
+}
+
+/* RENDER */
+
+function renderChat(){
+
+    chat.innerHTML = "";
+
+    chatList.innerHTML = "";
+
+    Object.keys(chats).forEach(id => {
+
+        const div =
+        document.createElement("div");
+
+        div.classList.add("chat-item");
+
+        const title =
+        document.createElement("span");
+
+        title.textContent =
+        chats[id].title;
+
+        const rename =
+        document.createElement("span");
+
+        rename.textContent = "✏️";
+
+        rename.classList.add(
+        "rename-btn"
+        );
+
+        rename.onclick = (e)=>{
+
+            e.stopPropagation();
+
+            const newName =
+            prompt("Nom du chat ?");
+
+            if(newName){
+
+                chats[id].title =
+                newName;
+
+                saveChats();
+
+                renderChat();
+
+            }
+
+        };
+
+        div.onclick = ()=>switchChat(id);
+
+        div.appendChild(title);
+
+        div.appendChild(rename);
+
+        chatList.appendChild(div);
+
+    });
+
+    const messages =
+    chats[currentChat]?.messages || [];
+
+    messages.forEach(m => {
+
+        if(m.role === "user"){
+
+            addMsg(m.content,"user");
+
+        }
+
+        if(m.role === "assistant"){
+
+            addMsg(m.content,"bot");
+
+        }
+
+    });
+
+}
+
+/* ADD MESSAGE */
+
+function addMsg(text,type){
+
+    const div =
+    document.createElement("div");
+
+    div.classList.add("msg",type);
+
+    div.textContent = text;
+
+    chat.appendChild(div);
+
+    chat.scrollTop =
+    chat.scrollHeight;
+
+    return div;
+
+}
+
+/* SEND */
+
+async function send(){
+
+    const input =
+    document.getElementById("input");
+
+    const text =
+    input.value.trim();
+
+    if(!text || !currentChat) return;
+
+    addMsg(text,"user");
+
+    chats[currentChat].messages.push({
+
+        role:"user",
+
+        content:text
+
+    });
+
+    saveChats();
+
+    input.value = "";
+
+    const loading =
+    addMsg(
+    "⏳ Sadhel réfléchit...",
+    "bot"
+    );
+
+    try{
+
+        const response =
+        await fetch(
+
+        "https://hebergement-sadhel.onrender.com/chat",
+
+        {
+
+            method:"POST",
+
+            headers:{
+                "Content-Type":
+                "application/json"
+            },
+
+            body:JSON.stringify({
+
+                messages:
+                chats[currentChat].messages
+
+            })
+
+        });
+
+        const data =
+        await response.json();
+
+        console.log(data);
+
+        loading.remove();
+
+        const reply =
+
+        data.reply ||
+
+        "❌ Sadhel n'a pas répondu";
+
+        addMsg(reply,"bot");
+
+        chats[currentChat].messages.push({
+
+            role:"assistant",
+
+            content:reply
+
+        });
+
+        saveChats();
+
+    }catch(error){
+
+        console.log(error);
+
+        loading.remove();
+
+        addMsg(
+
+        "❌ Impossible de contacter Sadhel",
+
+        "bot"
+
+        );
+
+    }
+
+}
+
+/* ENTER */
+
+document
+.getElementById("input")
+
+.addEventListener(
+
+"keydown",
+
+(e)=>{
+
+    if(e.key === "Enter"){
+
+        send();
+
+    }
+
+});
+
+/* INIT */
+
+if(Object.keys(chats).length === 0){
+
+    newChat();
+
+}else{
+
+    switchChat(
+    Object.keys(chats)[0]
+    );
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,443 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <title>Djeli</title>
+
+<style>
+
+body{
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+    animation: pageFade 1s ease forwards;
+}
+
+@keyframes pageFade {
+
+    to{
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+/* HEADER */
+
+header{
+    background: linear-gradient(to right, #0b3d91, #0b3d91);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    margin: 20px;
+    text-align: center;
+    padding: 20px;
+}
+
+header img{
+    border-radius: 30px;
+}
+
+.headers{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+header h1{
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: 0;
+}
+
+.headers p{
+    background-color: white;
+    padding: 8px 15px;
+    border-radius: 10px;
+    margin: 0;
+}
+
+/* NAVIGATION */
+
+nav{
+    background-color: gold;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+nav a{
+    margin: 0 15px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+nav a:hover{
+    color: white;
+}
+
+/* INTRO */
+
+.card{
+    border-radius: 15px;
+    padding: 20px;
+    margin: 50px auto;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    width: 30%;
+    background-color: white;
+    transition: 0.3s
+}
+
+.card:hover{
+    transform: translateY(-7px);
+}
+
+
+.card img{
+    width: 150px;
+    height: 150px;
+    border-radius: 20px;
+}
+
+
+.intro{
+    text-align: justify;
+    line-height: 1.6;
+}
+
+/* FEATURES */
+
+.features{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.features div{
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    width: 180px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-size: large;
+    transition: 0.3s;
+}
+
+.features div:hover{
+    transform: scale(1.1);
+}
+
+/* WHY */
+
+.why{
+    text-align: center;
+    padding: 40px;
+}
+
+.why-container{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.why-container div{
+    background: #0b3d91;
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+.why-container div:hover{
+    transform: translateY(-5px);
+}
+
+/* AVIS */
+
+.avis{
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+}
+
+.avis h2{
+    margin-bottom: 30px;
+}
+
+.avis-container{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.temoignage{
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    width: 250px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-style: italic;
+    position: relative;
+    transition: 0.3s;
+}
+
+.temoignage:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.temoignage::before{
+    content: "“";
+    font-size: 30px;
+    color: gold;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.nom{
+    margin-top: 10px;
+    font-weight: bold;
+    color: #0b3d91;
+}
+
+/* FOOTER */
+
+footer{
+    text-align: center;
+    padding: 15px;
+    background-color: #eee;
+    font-size: 14px;
+    margin-top: 5%;
+}
+
+footer h2{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.adress{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px){
+
+    header{
+        margin: 10px;
+    }
+
+    nav{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .card{
+        flex-direction: column;
+        width: 90%;
+        text-align: center;
+    }
+
+    .intro{
+        text-align: center;
+    }
+
+    .avis-container{
+        flex-direction: column;
+        align-items: center;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<section class="headers">
+
+<img src="https://raw.githubusercontent.com/elisa00307-sudo/images-videos-HG-mon-combat/main/3f8429a4-2619-4948-8ea5-23cdc6d4e821.png" style="height:150px;">
+
+<h1>Histoire-géographie</h1>
+
+<p>Apprendre, Comprendre, Réussir</p>
+
+</section>
+
+<nav>
+
+<a href="Accueil-hg.html">Accueil</a>
+
+<a href="Collège-hg.html">Collège</a>
+
+<a href="Lycée-hg.html">Lycée</a>
+
+<a href="Fichedenotes-hg.html">Fiche de notes</a>
+
+</nav>
+
+</header>
+
+<main>
+
+<section class="card">
+
+<img src="https://raw.githubusercontent.com/elisa00307-sudo/images-videos-HG-mon-combat/main/fbb707cf-30ad-47e6-9725-15de700f85a1.png">
+
+<div class="intro">
+
+<p>
+
+<strong><i>Djeli</i></strong>
+est une plateforme éducative qui t’aide à renforcer tes connaissances en histoire et géographie.
+Grâce à des vidéos explicatives et des fiches de révision téléchargeables, apprendre et comprendre 
+les leçons devient plus simple, plus clair et plus efficace.
+
+</p>
+
+</div>
+
+</section>
+
+<section class="features">
+
+<div>📹 Vidéos</div>
+
+<div>📝 Fiches</div>
+
+<div>📊 Notes</div>
+
+</section>
+
+<section class="why">
+
+<h2>Pourquoi choisir ce site ?</h2>
+
+<div class="why-container">
+
+<div>⚡ Apprentissage rapide</div>
+
+<div>🎯 Cours simplifiés</div>
+
+<div>🎓 Adapté au programme</div>
+
+</div>
+
+</section>
+
+<section class="avis">
+
+<h2>Avis des élèves</h2>
+
+<div class="avis-container">
+
+<div class="temoignage">
+Ce site m’a sauvé avant mon contrôle 😭🔥
+<div class="nom">– Sarah</div>
+</div>
+
+<div class="temoignage">
+Les fiches sont super claires !
+<div class="nom">– Kevin</div>
+</div>
+
+<div class="temoignage">
+J’ai enfin compris l’histoire 😭
+<div class="nom">– Amina</div>
+</div>
+
+</div>
+
+</section>
+
+<footer>
+<h2>Nous contacter</h2>
+
+<div class="adress">
+
+<a href="https://www.instagram.com/e.li.sa_nd0" target="_blank">
+
+<img src="https://1000logos.net/wp-content/uploads/2017/02/Instagram-Logosu-1536x864.png" width="50">
+
+</a>
+
+<p>© 2026 Djeli. Tous droits réservés.</p>
+
+</div>
+
+</footer>
+
+<script>
+
+const user =
+JSON.parse(localStorage.getItem("user"));
+
+const connected =
+localStorage.getItem("connected");
+
+if(user && connected === "true"){
+
+document.querySelector(".buttons")
+.style.display = "none";
+
+document.getElementById("student-space")
+.style.display = "block";
+
+document.getElementById("student-name")
+.innerText = user.fullname;
+
+document.getElementById("school-input")
+.value = user.school;
+
+document.getElementById("age-input")
+.value = user.age;
+
+}
+
+function saveProfile(){
+
+user.school =
+document.getElementById("school-input").value;
+
+user.age =
+document.getElementById("age-input").value;
+
+localStorage.setItem("user", JSON.stringify(user));
+
+alert("Profil mis à jour ✨");
+
+}
+
+</script>
+
+</body>
+</html>
