@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Inscription</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+
+    background: linear-gradient(135deg,#0b3d91,#4169e1);
+
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadePage 1s ease forwards;
+}
+
+@keyframes fadePage{
+
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+/* CARTE */
+
+.student-card{
+
+    background: white;
+
+    width: 90%;
+    max-width: 420px;
+
+    padding: 40px 30px;
+
+    border-radius: 30px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+
+    text-align: center;
+
+    animation: cardFloat 3s ease-in-out infinite;
+}
+
+@keyframes cardFloat{
+
+    0%{
+        transform: translateY(0px);
+    }
+
+    50%{
+        transform: translateY(-5px);
+    }
+
+    100%{
+        transform: translateY(0px);
+    }
+
+}
+
+.student-card h2{
+
+    color: #0b3d91;
+
+    margin-bottom: 30px;
+
+}
+
+/* INPUTS */
+
+.student-card input{
+
+    width: 90%;
+
+    padding: 14px;
+
+    margin-bottom: 18px;
+
+    border-radius: 15px;
+
+    border: 2px solid #ddd;
+
+    font-size: 15px;
+
+    font-family: 'Poppins', sans-serif;
+
+    transition: 0.3s;
+
+    outline: none;
+}
+
+.student-card input:focus{
+
+    border-color: royalblue;
+
+    box-shadow: 0 0 10px rgba(65,105,225,0.3);
+
+}
+
+/* BOUTON */
+
+.save-btn{
+
+    background: gold;
+
+    color: black;
+
+    border: none;
+
+    padding: 14px 35px;
+
+    border-radius: 40px;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+
+    font-family: 'Poppins', sans-serif;
+}
+
+.save-btn:hover{
+
+    background: royalblue;
+
+    color: white;
+
+    transform: scale(1.05);
+
+    box-shadow: 0 8px 20px rgba(65,105,225,0.4);
+
+}
+
+/* TEXTE BAS */
+
+.bottom-text{
+
+    margin-top: 25px;
+
+    font-size: 14px;
+}
+
+.bottom-text a{
+
+    color: #0b3d91;
+
+    text-decoration: none;
+
+    font-weight: bold;
+}
+
+.bottom-text a:hover{
+
+    color: royalblue;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+    .student-card{
+
+        padding: 30px 20px;
+
+    }
+
+    .student-card h2{
+
+        font-size: 24px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="student-card">
+
+<h2>Créer un compte ✨</h2>
+
+<input type="text" id="fullname" placeholder="Nom et prénom">
+
+<input type="text" id="school" placeholder="École">
+
+<input type="number" id="age" placeholder="Âge">
+
+<input type="email" id="email" placeholder="Email">
+
+<input type="password" id="password" placeholder="Mot de passe">
+
+<button class="save-btn" onclick="signup()">
+
+S'inscrire
+
+</button>
+
+<div class="bottom-text">
+
+Déjà un compte ?
+
+<a href="login.html">Connexion</a>
+
+</div>
+
+</div>
+
+<script>
+
+function signup(){
+
+    const fullname = document.getElementById("fullname").value;
+    const school = document.getElementById("school").value;
+    const age = document.getElementById("age").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    if(!fullname || !school || !age || !email || !password){
+        alert("Remplis tous les champs 😭");
+        return;
+    }
+
+    const user = { fullname, school, age, email, password };
+
+    localStorage.setItem("user", JSON.stringify(user));
+    localStorage.setItem("connected", "true");
+
+    alert("Compte créé ✨");
+
+    window.location.href = "index.html";
+}
+
+</script>
+
+</body>
+
+</html>

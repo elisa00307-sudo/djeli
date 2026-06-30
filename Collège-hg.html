@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Collège - Histoire-géo</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+
+    overflow-x: hidden;
+
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+    animation: pageFade 1s ease forwards;
+}
+
+@keyframes pageFade {
+
+    to{
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+/* HEADER */
+
+header{
+    background-color: #0b3d91;
+    text-align: center;
+    padding: 30px 20px;
+    color: white;
+
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+header h1{
+    background: white;
+    color: black;
+
+    display: inline-block;
+
+    padding: 12px 25px;
+
+    border-radius: 12px;
+
+    margin-bottom: 10px;
+}
+
+header p{
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+/* TITRE */
+
+h2{
+    text-align: center;
+    color: #333;
+}
+
+/* BOX */
+
+.box{
+
+    background: white;
+
+    width: 380px;
+    max-width: 90%;
+
+    margin: 40px auto;
+
+    padding: 25px;
+
+    border-radius: 20px;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+}
+
+.box input{
+
+    padding: 12px;
+
+    border-radius: 10px;
+
+    border: 1px solid #ccc;
+
+    font-family: Poppins;
+}
+
+.box button{
+
+    padding: 12px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #0b3d91;
+
+    color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.box button:hover{
+
+    background: gold;
+
+    color: black;
+}
+
+.switch{
+
+    text-align: center;
+
+    font-size: 14px;
+}
+
+.switch a{
+
+    color: #0b3d91;
+
+    font-weight: bold;
+
+    text-decoration: none;
+}
+
+/* CONTAINER */
+
+.container{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+
+    margin-top: 40px;
+    padding: 20px;
+
+    flex-wrap: wrap;
+}
+
+/* CARTES */
+
+.classe{
+    background: white;
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    width: 220px;
+    max-width: 90%;
+
+    text-align: center;
+
+    font-size: 20px;
+    font-weight: bold;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+    text-decoration: none;
+    color: black;
+}
+
+.classe:hover{
+
+    transform: translateY(-8px) scale(1.03);
+
+    background: gold;
+
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* RESPONSIVE */
+
+@media (max-width:768px){
+
+    header{
+        padding: 25px 15px;
+    }
+
+    header h1{
+        font-size: 28px;
+    }
+
+    header p{
+        font-size: 16px;
+    }
+
+    .container{
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .classe{
+        width: 90%;
+        font-size: 18px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+    <h1>Collège</h1>
+
+    <p>Choisis ton niveau</p>
+
+</header>
+
+<h2>📚 Sélectionne ta classe</h2>
+
+<section class="container">
+
+    <a href="6ème_hg.html" class="classe">6ème</a>
+
+    <a href="5ème_hg.html" class="classe">5ème</a>
+
+    <a href="4ème_hg.html" class="classe">4ème</a>
+
+    <a href="3ème_hg.html" class="classe">3ème</a>
+
+</section>
+
+</body>
+
+</html>

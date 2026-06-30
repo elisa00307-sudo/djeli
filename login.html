@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Connexion</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+
+    background:linear-gradient(135deg,#0b3d91,#4169e1);
+
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:20px;
+
+    overflow-x:hidden;
+
+    opacity:0;
+    transform:translateY(20px);
+    animation:fadePage 1s ease forwards;
+}
+
+@keyframes fadePage{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* CARTE */
+
+.student-card{
+
+    background:white;
+
+    width:100%;
+    max-width:420px;
+
+    padding:40px 30px;
+
+    border-radius:30px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+
+    text-align:center;
+
+    animation:cardFloat 3s ease-in-out infinite;
+}
+
+@keyframes cardFloat{
+
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-5px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+.student-card h2{
+
+    color:#0b3d91;
+
+    margin-bottom:30px;
+
+    font-size:32px;
+}
+
+/* INPUTS */
+
+.student-card input{
+
+    width:100%;
+
+    padding:14px;
+
+    margin-bottom:18px;
+
+    border-radius:15px;
+
+    border:2px solid #ddd;
+
+    font-size:15px;
+
+    font-family:'Poppins',sans-serif;
+
+    transition:0.3s;
+
+    outline:none;
+}
+
+.student-card input:focus{
+
+    border-color:royalblue;
+
+    box-shadow:0 0 10px rgba(65,105,225,0.3);
+}
+
+/* BOUTON */
+
+.save-btn{
+
+    width:100%;
+
+    background:gold;
+
+    color:black;
+
+    border:none;
+
+    padding:14px;
+
+    border-radius:40px;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:all 0.3s ease;
+
+    font-family:'Poppins',sans-serif;
+}
+
+.save-btn:hover{
+
+    background:royalblue;
+
+    color:white;
+
+    transform:scale(1.03);
+
+    box-shadow:0 8px 20px rgba(65,105,225,0.4);
+}
+
+/* RESPONSIVE TABLET */
+
+@media(max-width:768px){
+
+    .student-card{
+
+        padding:35px 25px;
+    }
+
+    .student-card h2{
+
+        font-size:28px;
+    }
+}
+
+/* RESPONSIVE TELEPHONE */
+
+@media(max-width:480px){
+
+    body{
+        padding:15px;
+    }
+
+    .student-card{
+
+        padding:30px 20px;
+
+        border-radius:25px;
+    }
+
+    .student-card h2{
+
+        font-size:24px;
+
+        margin-bottom:25px;
+    }
+
+    .student-card input{
+
+        padding:13px;
+
+        font-size:14px;
+    }
+
+    .save-btn{
+
+        padding:13px;
+
+        font-size:15px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="student-card">
+
+    <h2>Connexion ✨</h2>
+
+    <input type="email"
+           id="login-email"
+           placeholder="Email">
+
+    <input type="password"
+           id="login-password"
+           placeholder="Mot de passe">
+
+    <button class="save-btn" onclick="login()">
+        Se connecter
+    </button>
+
+</div>
+
+<script>
+
+function login(){
+
+    const savedUser = JSON.parse(localStorage.getItem("user"));
+
+    const email = document.getElementById("login-email").value;
+    const password = document.getElementById("login-password").value;
+
+    if(!email || !password){
+
+        alert("Remplis tous les champs 😭");
+        return;
+    }
+
+    if(!savedUser){
+
+        alert("Aucun compte trouvé ❌");
+        return;
+    }
+
+    if(email === savedUser.email &&
+       password === savedUser.password){
+
+        localStorage.setItem("connected","true");
+
+        alert("Connexion réussie ✨");
+
+        window.location.href = "index.html";
+
+    }else{
+
+        alert("Email ou mot de passe incorrect ❌");
+    }
+}
+
+</script>
+
+</body>
+</html>

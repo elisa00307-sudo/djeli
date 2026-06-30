@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Histoire-géo mon combat</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    overflow-x: hidden;
+
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+    animation: pageFade 1s ease forwards;
+}
+
+@keyframes pageFade {
+
+    to{
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+/* HEADER */
+
+header{
+    background-color: #0b3d91;
+    text-align: center;
+    padding: 30px 20px;
+    color: white;
+
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+header h1{
+    background: white;
+    color: black;
+
+    display: inline-block;
+
+    padding: 12px 25px;
+
+    border-radius: 12px;
+
+    font-size: 28px;
+
+    max-width: 90%;
+}
+
+/* CONTAINER */
+
+.cards-container{
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 30px;
+
+    justify-content: center;
+
+    padding: 40px 20px;
+}
+
+/* CARD */
+
+.card{
+
+    width: 350px;
+    max-width: 95%;
+
+    background: white;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover{
+
+    transform: translateY(-8px);
+
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* IMAGE */
+
+.card img{
+
+    width: 100%;
+
+    height: auto;
+
+    display: block;
+}
+
+/* CAPTION */
+
+.caption{
+
+    text-align: center;
+
+    font-weight: bold;
+
+    background-color: #f8f8f8;
+
+    padding: 15px;
+
+    font-size: 18px;
+}
+
+/* BOUTON TELECHARGEMENT */
+
+.download{
+
+    display: block;
+
+    width: 100%;
+
+    text-align: center;
+
+    background: gold;
+
+    color: black;
+
+    font-weight: bold;
+
+    padding: 15px;
+
+    transition: 0.3s;
+
+    border: none;
+
+    cursor: pointer;
+
+    font-size: 16px;
+}
+
+.download:hover{
+
+    background: #0b3d91;
+
+    color: white;
+}
+
+/* RESPONSIVE */
+
+@media (max-width:768px){
+
+    header{
+        padding: 25px 15px;
+    }
+
+    header h1{
+        font-size: 22px;
+    }
+
+    .cards-container{
+        padding: 25px 15px;
+        gap: 20px;
+    }
+
+    .card{
+        width: 100%;
+    }
+
+    .caption{
+        font-size: 16px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<script>
+
+const connected = localStorage.getItem("connected");
+
+if(connected !== "true"){
+
+    alert("Inscris-toi d'abord 🔒");
+
+    window.location.href = "signup.html";
+}
+
+</script>
+
+<header>
+
+<h1>Des fiches de notes stylées à télécharger !</h1>
+
+</header>
+
+<main>
+
+<div class="cards-container">
+
+    <!-- CARD 1 -->
+
+    <div class="card">
+
+        <img 
+        src="https://raw.githubusercontent.com/elisa00307-sudo/site-hg-mon-combat/main/1.png"
+        alt="Fiche science">
+
+        <div class="caption">
+
+            2nd cycle thème <strong><em>sciences</em></strong>
+
+        </div>
+
+        <button class="download"
+        onclick="downloadFile(
+        'https://raw.githubusercontent.com/elisa00307-sudo/site-hg-mon-combat/main/1.png',
+        'fiche-sciences.png'
+        )">
+
+        📥 Télécharger la fiche
+
+        </button>
+
+    </div>
+
+    <!-- CARD 2 -->
+
+    <div class="card">
+
+        <img 
+        src="https://raw.githubusercontent.com/elisa00307-sudo/site-hg-mon-combat/main/3.png"
+        alt="Fiche Ste Marie">
+
+        <div class="caption">
+
+            1er cycle spécial Ste Marie
+
+        </div>
+
+        <button class="download"
+        onclick="downloadFile(
+        'https://raw.githubusercontent.com/elisa00307-sudo/site-hg-mon-combat/main/3.png',
+        'fiche-ste-marie.png'
+        )">
+
+        📥 Télécharger la fiche
+
+        </button>
+
+    </div>
+
+    <!-- CARD 3 -->
+
+    <div class="card">
+
+        <img 
+        src="https://raw.githubusercontent.com/elisa00307-sudo/site-hg-mon-combat/main/tableau%20de%20notes.png"
+        alt="Tableau de notes">
+
+        <div class="caption">
+
+            2nd cycle
+
+        </div>
+
+        <button class="download"
+        onclick="downloadFile(
+        'https://raw.githubusercontent.com/elisa00307-sudo/site-hg-mon-combat/main/tableau%20de%20notes.png',
+        'tableau-de-notes.png'
+        )">
+
+        📥 Télécharger la fiche
+
+        </button>
+
+    </div>
+
+</div>
+
+</main>
+
+<script>
+
+function downloadFile(url, filename){
+
+    fetch(url)
+    .then(response => response.blob())
+    .then(blob => {
+
+        const link = document.createElement('a');
+
+        link.href = window.URL.createObjectURL(blob);
+
+        link.download = filename;
+
+        document.body.appendChild(link);
+
+        link.click();
+
+        document.body.removeChild(link);
+
+        window.URL.revokeObjectURL(link.href);
+
+    })
+    .catch(error => {
+
+        alert("Erreur de téléchargement 😢");
+
+        console.error(error);
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,384 @@
+<!DOCTYPE HTML>
+<html lang="fr">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+<title>Histoire-géo mon combat</title>
+
+<style>
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+
+    opacity: 0;
+    transform: translateY(20px);
+    animation: pageFade 0.8s ease forwards;
+       overflow-x: hidden;
+}
+
+@keyframes pageFade{
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* HEADER */
+header{
+    background-color: #0b3d91;
+    text-align: center;
+    padding: 30px 20px;
+    color: white;
+}
+
+/* BUTTONS */
+.top-buttons{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.btn{
+    background: gold;
+    color: black;
+    padding: 14px 35px;
+    border-radius: 40px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn:hover{
+    background: royalblue;
+    color: white;
+    transform: scale(1.05);
+}
+
+/* ESPACE ELEVE */
+.student-card{
+    background: white;
+    width: 90%;
+    max-width: 520px;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    text-align: center;
+    animation: pop 0.6s ease;
+}
+
+#badgePanel {
+    margin-top: 20px;
+    padding: 10px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+}
+
+.badge {
+    padding: 5px;
+    margin: 5px 0;
+    background: rgba(255,255,255,0.15);
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+@keyframes pop{
+    from{transform: scale(0.9); opacity:0;}
+    to{transform: scale(1); opacity:1;}
+}
+
+/* PHOTO */
+.profile-pic{
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #0b3d91;
+    cursor: pointer;
+}
+
+/* INPUT */
+input{
+    width: 85%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+/* BUTTONS ACTION */
+.action-btn{
+    margin-top: 15px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.save-btn{ background:#0b3d91; color:white; }
+.logout-btn{ background:red; color:white; }
+
+
+.sadhel-banner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background: linear-gradient(135deg,#0b3d91,#4169e1);
+    color:white;
+    padding:20px;
+    border-radius:20px;
+    margin-top:20px;
+    text-decoration:none;
+}
+
+
+/* =========================
+   TABLETTE
+========================= */
+@media (max-width: 900px) {
+
+    .student-card {
+        width: 85%;
+        padding: 25px;
+    }
+
+    .top-buttons {
+        gap: 12px;
+    }
+
+    .btn {
+        padding: 12px 25px;
+        font-size: 14px;
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 700px) {
+
+    header {
+        padding: 20px 10px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    .top-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .btn {
+        width: 80%;
+        text-align: center;
+        padding: 12px;
+        border-radius: 30px;
+    }
+
+    .student-card {
+        width: 92%;
+        padding: 20px;
+        border-radius: 18px;
+    }
+
+    input {
+        width: 95%;
+        font-size: 14px;
+    }
+
+    .profile-pic {
+        width: 80px;
+        height: 80px;
+      cursor:pointer;
+
+    }
+
+    .lecons {
+        font-size: 13px;
+    }
+
+    .sadhel-banner {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+}
+
+/* =========================
+   PETITS TÉLÉPHONES
+========================= */
+@media (max-width: 400px) {
+
+    h1 {
+        font-size: 20px;
+    }
+
+    .btn {
+        width: 90%;
+        font-size: 13px;
+    }
+
+    .student-card {
+        padding: 15px;
+    }
+
+    .profile-pic {
+        width: 70px;
+        height: 70px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Espace élève</h1>
+<p>Ton profil, tes cordonnées, ton assistant IA...</p>
+</header>
+
+<h2 style="text-align:center;">✨ Tout est là ! !</h2>
+
+<!-- BOUTONS -->
+<div class="top-buttons" id="buttons">
+
+<a href="login.html" class="btn">Connexion</a>
+<a href="signup.html" class="btn">Inscription</a>
+
+</div>
+
+<!-- ESPACE ELEVE -->
+<div id="student-space" style="display:none;">
+
+<div class="student-card">
+
+<div class="profile-wrapper">
+
+    <label for="fileInput">
+        <img id="profilePic"
+             src="https://i.imgur.com/1X5QZ1b.png"
+             class="profile-pic">
+    </label>
+
+    <input type="file"
+           id="fileInput"
+           accept="image/*"
+           onchange="changePic(event)"
+           style="display:none;">
+
+</div>
+<h3 id="student-name"></h3>
+
+<p>
+École:<br>
+<input id="school">
+</p>
+
+<p>
+Âge:<br>
+<input id="age">
+</p>
+
+<button class="action-btn save-btn" onclick="saveProfile()">Sauvegarder</button>
+<button class="action-btn logout-btn" onclick="logout()">Déconnexion</button>
+
+
+</div>
+
+
+<a class="sadhel-banner" href="sadhel-hg.html">
+<div>
+<h3>Sadhel 🤖</h3>
+<p>Discuter avec ton assistant</p>
+</div>
+<span>→</span>
+</a>
+
+</div>
+
+<script>
+
+// USER DATA
+let user = JSON.parse(localStorage.getItem("user"));
+let connected = localStorage.getItem("connected");
+
+// SHOW LESSONS
+function updateLessons(){
+    let lessons = JSON.parse(localStorage.getItem("lessons") || "[]");
+
+    let list = document.getElementById("lastLessons");
+    list.innerHTML = "";
+
+    lessons.slice(-3).reverse().forEach(l=>{
+        let li = document.createElement("li");
+        li.textContent = l;
+        list.appendChild(li);
+    });
+}
+
+// SHOW SPACE
+if(user && connected === "true"){
+
+    document.getElementById("buttons").style.display = "none";
+    document.getElementById("student-space").style.display = "block";
+
+    document.getElementById("student-name").innerText = user.fullname;
+    document.getElementById("school").value = user.school;
+    document.getElementById("age").value = user.age;
+
+    updateLessons();
+}
+
+// SAVE PROFILE
+function saveProfile(){
+
+    user.school = document.getElementById("school").value;
+    user.age = document.getElementById("age").value;
+
+    localStorage.setItem("user", JSON.stringify(user));
+
+    alert("Profil mis à jour ✨");
+}
+
+// LOGOUT
+function logout(){
+    localStorage.removeItem("connected");
+    location.reload();
+}
+
+document.getElementById("profilePic").onclick = function(){
+    document.getElementById("fileInput").click();
+};
+
+function changePic(event){
+    const file = event.target.files[0];
+
+    if(file){
+        const reader = new FileReader();
+
+        reader.onload = function(e){
+            document.getElementById("profilePic").src = e.target.result;
+            localStorage.setItem("profilePic", e.target.result);
+        };
+
+        reader.readAsDataURL(file);
+    }
+}
+
+</script>
+
+</body>
+</html>
