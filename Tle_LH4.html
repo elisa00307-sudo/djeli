@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Leçon - Histoire Géo</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <style>
+
+        *{
+            box-sizing: border-box;
+        }
+
+        body{
+
+            margin: 0;
+
+            font-family: 'Poppins', sans-serif;
+
+            background-color: #f3f4fb;
+
+            overflow-x: hidden;
+
+            opacity: 0;
+
+            transform: translateY(20px) scale(0.98);
+
+            animation: pageFade 1s ease forwards;
+        }
+
+        @keyframes pageFade{
+
+            to{
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+
+        }
+
+        /* CONTAINER PRINCIPAL */
+
+        .top-section{
+
+            display: flex;
+
+            gap: 25px;
+
+            padding: 20px;
+
+            align-items: flex-start;
+
+            flex-wrap: wrap;
+        }
+
+        /* VIDEO */
+
+        .video-container{
+
+            flex: 2;
+
+            min-width: 300px;
+
+            background: white;
+
+            border-radius: 20px;
+
+            padding: 15px;
+
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        video{
+
+            width: 100%;
+
+            border-radius: 15px;
+
+            display: block;
+        }
+
+        /* FICHE */
+
+        .fiche{
+
+            flex: 1;
+
+            min-width: 280px;
+
+            background: #f5f5f5;
+
+            border-radius: 20px;
+
+            padding: 20px;
+
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .fiche h2{
+
+            margin-top: 0;
+
+            font-size: 32px;
+        }
+
+        .fiche p{
+            line-height: 1.7;
+        }
+
+        .download-btn{
+
+            display: inline-block;
+
+            margin-top: 15px;
+
+            background: #6c5ce7;
+
+            color: white;
+
+            padding: 12px 20px;
+
+            border-radius: 12px;
+
+            text-decoration: none;
+
+            transition: 0.3s;
+        }
+
+        .download-btn:hover{
+
+            background: #0b3d91;
+
+            transform: scale(1.03);
+        }
+
+        .preview{
+
+            margin-top: 25px;
+        }
+
+        .preview img{
+
+            width: 100%;
+
+            border-radius: 12px;
+
+            display: block;
+        }
+
+        /* SECTION BAS */
+
+        .bottom-section{
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 30px;
+
+            padding: 20px;
+
+            flex-wrap: wrap;
+        }
+
+        /* BLOCS */
+
+        .box{
+
+            background: white;
+
+            border-radius: 20px;
+
+            padding: 25px;
+
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+      
+        
+        /* RESPONSIVE */
+
+        @media (max-width:768px){
+
+            .top-section{
+
+                flex-direction: column;
+            }
+
+            .video-container,
+            .fiche{
+
+                width: 100%;
+            }
+
+            .bottom-section{
+
+                flex-direction: column;
+
+                align-items: center;
+            }
+
+            .rating-box,
+            .comment-box{
+
+                width: 100%;
+            }
+
+            .fiche h2{
+
+                font-size: 26px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- SECTION HAUT -->
+
+    <section class="top-section">
+
+        <!-- VIDEO -->
+
+        <div class="video-container">
+
+            <video controls>
+
+                <source src="https://raw.githubusercontent.com/elisa00307-sudo/site-hg-mon-combat/main/VID-20260209-WA0037.mp4" type="video/mp4">
+
+            </video>
+
+        </div>
+
+        <!-- FICHE -->
+
+        <div class="fiche">
+
+            <h2>📄 Fiche de révision</h2>
+
+            <p>
+                Résumé clair + points essentiels de la leçon.
+            </p>
+
+            <a href="https://raw.githubusercontent.com/elisa00307-sudo/fiche-de-revision-djeli/main/Tle_LH4.pdf" download class="download-btn">
+
+                Télécharger la fiche
+
+            </a>
+
+            <div class="preview">
+
+                <p><strong>Aperçu :</strong></p>
+
+                <img src="https://raw.githubusercontent.com/elisa00307-sudo/fiche-de-revision-djeli/main/Tle_LH4.png" alt="Aperçu fiche">
+
+            </div>
+
+
+</div>
+
+</body>
+
+</html>
