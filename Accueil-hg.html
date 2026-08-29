@@ -1,0 +1,920 @@
+<!DOCTYPE HTML>
+<html lang="fr">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+<title>Djeli | Histoire-Géo</title>
+
+<style>
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+
+    opacity: 0;
+    transform: translateY(20px);
+    animation: pageFade 0.8s ease forwards;
+       overflow-x: hidden;
+}
+
+@keyframes pageFade{
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* HEADER */
+header{
+    background-color: #0b3d91;
+    text-align: center;
+    padding: 30px 20px;
+    color: white;
+}
+
+/* BUTTONS */
+.top-buttons{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.btn{
+    background: gold;
+    color: black;
+    padding: 14px 35px;
+    border-radius: 40px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn:hover{
+    background: royalblue;
+    color: white;
+    transform: scale(1.05);
+}
+
+/* ESPACE ELEVE */
+.student-card{
+    background: white;
+    width: 90%;
+    max-width: 520px;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    text-align: center;
+    animation: pop 0.6s ease;
+}
+
+#badgePanel {
+    margin-top: 20px;
+    padding: 10px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+}
+
+.badge {
+    padding: 5px;
+    margin: 5px 0;
+    background: rgba(255,255,255,0.15);
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+@keyframes pop{
+    from{transform: scale(0.9); opacity:0;}
+    to{transform: scale(1); opacity:1;}
+}
+
+/* PHOTO */
+.profile-pic{
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #0b3d91;
+    cursor: pointer;
+}
+
+/* INPUT */
+input{
+    width: 85%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+/* BUTTONS ACTION */
+.action-btn{
+    margin-top: 15px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.home-btn {
+    display: block;
+    width: fit-content;
+    margin: 25px auto 10px;
+    padding: 12px 25px;
+    background: #0b3d91;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.home-btn:hover {
+    background: gold;
+    color: black;
+    transform: scale(1.05);
+}
+
+.save-btn{ background:#0b3d91; color:white; }
+.logout-btn{ background:red; color:white; }
+
+
+/* =========================
+   SADHEL
+========================= */
+
+.sadhel-container{
+    width:90%;
+    max-width:900px;
+    margin:30px auto;
+}
+
+.sadhel-banner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    width:100%;
+    background:linear-gradient(135deg,#0b3d91,#4169e1);
+    color:white;
+    padding:22px 25px;
+    border-radius:20px;
+    text-decoration:none;
+    box-shadow:0 8px 25px rgba(11,61,145,0.25);
+    transition:0.3s ease;
+}
+
+.sadhel-banner:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 30px rgba(11,61,145,0.35);
+}
+
+.sadhel-banner h3{
+    margin:0 0 5px;
+    font-size:20px;
+}
+
+.sadhel-banner p{
+    margin:0;
+    font-size:14px;
+    opacity:0.95;
+}
+
+.sadhel-arrow{
+    font-size:32px;
+    font-weight:bold;
+    margin-left:15px;
+}
+
+
+/* Petite lumière décorative */
+
+        header::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 220px;
+            height: 220px;
+
+            background: rgba(255, 255, 255, 0.08);
+
+            border-radius: 50%;
+
+            top: -100px;
+            left: -70px;
+        }
+
+
+        
+
+
+        header h1 {
+
+            background: white;
+
+            color: black;
+
+            display: inline-block;
+
+            padding: 14px 35px;
+
+            border-radius: 16px;
+
+            margin: 0;
+
+            font-size: 42px;
+
+            font-weight: 600;
+
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+
+            position: relative;
+
+            z-index: 2;
+
+            transition: 0.3s ease;
+        }
+
+
+        header h1:hover {
+
+            transform: scale(1.04);
+        }
+
+
+        header p {
+
+            margin: 20px 0 0;
+
+            font-size: 19px;
+
+            font-weight: 400;
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        /* Petit trait doré */
+
+        header p::after {
+
+            content: "";
+
+            display: block;
+
+            width: 55px;
+            height: 4px;
+
+            background: gold;
+
+            border-radius: 10px;
+
+            margin: 14px auto 0;
+        }
+
+        /* =========================
+   PHOTO DE PROFIL
+========================= */
+
+.profile-wrapper{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-direction:column;
+
+    margin-bottom:15px;
+}
+
+
+.profile-pic{
+
+    width:100px;
+
+    height:100px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:4px solid #0b3d91;
+
+    cursor:pointer;
+
+    display:block;
+
+    transition:0.25s ease;
+
+    background:#eeeeee;
+}
+
+
+.profile-pic:hover{
+
+    transform:scale(1.05);
+
+}
+
+
+.profile-pic:active{
+
+    transform:scale(0.97);
+
+}
+
+
+/* Petit texte */
+
+.photo-help{
+
+    margin-top:10px;
+
+    font-size:12px;
+
+    color:#777;
+}
+
+/* =========================
+   TABLETTE
+========================= */
+@media (max-width: 900px) {
+
+    .student-card {
+        width: 85%;
+        padding: 25px;
+    }
+
+    .top-buttons {
+        gap: 12px;
+    }
+
+    .btn {
+        padding: 12px 25px;
+        font-size: 14px;
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 700px) {
+
+    header {
+        padding: 20px 10px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    .top-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .btn {
+        width: 80%;
+        text-align: center;
+        padding: 12px;
+        border-radius: 30px;
+    }
+
+.home-btn:hover {
+    background: gold;
+    color: black;
+    transform: scale(1.05);
+}
+
+    .student-card {
+        width: 92%;
+        padding: 20px;
+        border-radius: 18px;
+    }
+
+    input {
+        width: 95%;
+        font-size: 14px;
+    }
+
+    .profile-pic {
+        width: 80px;
+        height: 80px;
+      cursor:pointer;
+
+    }
+
+    .lecons {
+        font-size: 13px;
+    }
+
+    .sadhel-banner {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+}
+
+/* =========================
+   PETITS TÉLÉPHONES
+========================= */
+@media (max-width: 400px) {
+
+    h1 {
+        font-size: 20px;
+    }
+
+    .btn {
+        width: 90%;
+        font-size: 13px;
+    }
+
+    .student-card {
+        padding: 15px;
+    }
+
+    .profile-pic {
+        width: 70px;
+        height: 70px;
+    }
+}
+
+@media (max-width: 700px) {
+    .home-btn {
+        width: 80%;
+        text-align: center;
+        padding: 12px;
+        font-size: 14px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <h1>Espace élève</h1>
+
+    <p>
+        Ton profil, tes coordonnées, ton assistant IA...
+    </p>
+
+</header>
+
+
+<h2 style="text-align:center;">
+    ✨ Tout est là !
+</h2>
+
+
+<!-- =========================
+     BOUTONS CONNEXION
+========================= -->
+
+<div class="top-buttons" id="buttons">
+
+    <a href="login.html" class="btn">
+        Connexion
+    </a>
+
+    <a href="signup.html" class="btn">
+        Inscription
+    </a>
+
+</div>
+
+
+<!-- =========================
+     ESPACE ELEVE
+========================= -->
+
+<div id="student-space" style="display:none;">
+
+
+    <div class="student-card">
+
+
+        <!-- =========================
+             PHOTO
+        ========================= -->
+
+        <div class="profile-wrapper">
+
+
+            <img
+                id="profilePic"
+                src="https://i.imgur.com/1X5QZ1b.png"
+                class="profile-pic"
+                alt="Photo de profil"
+                title="Clique pour changer ta photo"
+            >
+
+
+            <input
+                type="file"
+                id="fileInput"
+                accept="image/jpeg,image/png,image/webp,image/gif"
+                style="display:none;"
+            >
+
+
+            <div class="photo-help">
+                📸 Appuie sur ta photo pour la modifier
+            </div>
+
+
+        </div>
+
+
+        <!-- =========================
+             NOM
+        ========================= -->
+
+        <h3 id="student-name">
+            Élève
+        </h3>
+
+
+        <!-- =========================
+             ECOLE
+        ========================= -->
+
+        <p>
+
+            École :
+
+            <br>
+
+            <input
+                id="school-input"
+                type="text"
+                placeholder="Ton établissement"
+            >
+
+        </p>
+
+
+        <!-- =========================
+             AGE
+        ========================= -->
+
+        <p>
+
+            Âge :
+
+            <br>
+
+            <input
+                id="age-input"
+                type="number"
+                placeholder="Ton âge"
+            >
+
+        </p>
+
+
+        <!-- =========================
+             SAUVEGARDER
+        ========================= -->
+
+        <button
+            class="action-btn save-btn"
+            id="save-profile"
+        >
+
+            Sauvegarder
+
+        </button>
+
+
+        <!-- =========================
+             DECONNEXION
+        ========================= -->
+
+        <button
+            class="action-btn logout-btn"
+            id="logout-btn"
+        >
+
+            Déconnexion
+
+        </button>
+
+
+        <!-- =========================
+             RETOUR
+        ========================= -->
+
+        <a
+            href="index.html"
+            class="home-btn"
+        >
+
+            🏠 Retour au menu principal
+
+        </a>
+    </div>
+
+   <!-- =========================
+     SADHEL
+     IMPORTANT :
+     HORS DE student-space
+========================= -->
+
+<div class="sadhel-container">
+
+    <a
+        class="sadhel-banner"
+        href="sadhel-hg.html"
+    >
+
+        <div>
+
+            <h3>
+                Sadhel 🤖
+            </h3>
+
+            <p>
+                Discuter avec ton assistant
+            </p>
+
+        </div>
+
+        <span class="sadhel-arrow">
+            →
+        </span>
+
+    </a>
+
+</div>
+
+<script type="module">
+
+import { auth, db } from "./js/firebase.js";
+
+import {
+    onAuthStateChanged,
+    signOut
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
+import {
+    doc,
+    getDoc,
+    updateDoc
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+
+const buttons = document.getElementById("buttons");
+const studentSpace = document.getElementById("student-space");
+
+const studentName = document.getElementById("student-name");
+const schoolInput = document.getElementById("school-input");
+const ageInput = document.getElementById("age-input");
+
+const saveButton = document.getElementById("save-profile");
+const logoutButton = document.getElementById("logout-btn");
+
+
+/* ================================
+   👤 SURVEILLER LA CONNEXION
+================================ */
+
+onAuthStateChanged(auth, async (user) => {
+
+    if (user) {
+
+        console.log("👤 Utilisateur connecté :", user.email);
+
+        // Cacher Connexion / Inscription
+        buttons.style.display = "none";
+
+        // Afficher espace élève
+        studentSpace.style.display = "block";
+
+
+        try {
+
+            // Récupérer le profil dans Firestore
+            const userRef = doc(db, "users", user.uid);
+
+            const userSnap = await getDoc(userRef);
+
+
+            if (userSnap.exists()) {
+
+                const data = userSnap.data();
+
+                console.log("📚 Profil récupéré :", data);
+
+
+                studentName.textContent =
+                    data.fullname || "Élève";
+
+                schoolInput.value =
+                    data.school || "";
+
+                ageInput.value =
+                    data.age || "";
+
+            } else {
+
+                console.log("⚠️ Aucun profil Firestore trouvé.");
+
+                studentName.textContent =
+                    user.email || "Élève";
+
+            }
+
+
+        } catch (error) {
+
+            console.error(
+                "❌ Erreur récupération profil :",
+                error
+            );
+
+        }
+
+
+    } else {
+
+        console.log("👤 Aucun utilisateur connecté");
+
+        // Afficher Connexion / Inscription
+        buttons.style.display = "flex";
+
+        // Cacher espace élève
+        studentSpace.style.display = "none";
+
+    }
+
+});
+
+
+/* ================================
+   💾 SAUVEGARDER LE PROFIL
+================================ */
+
+saveButton.addEventListener("click", async () => {
+
+    const user = auth.currentUser;
+
+
+    if (!user) {
+
+        alert("Tu dois être connecté pour modifier ton profil.");
+        return;
+
+    }
+
+
+    try {
+
+        const userRef = doc(db, "users", user.uid);
+
+
+        await updateDoc(userRef, {
+
+            school: schoolInput.value.trim(),
+
+            age: ageInput.value.trim()
+
+        });
+
+
+        alert("Profil mis à jour ✨");
+
+        console.log("✅ Profil Firestore mis à jour");
+
+
+    } catch (error) {
+
+        console.error(
+            "❌ Erreur sauvegarde :",
+            error
+        );
+
+        alert(
+            "Impossible de sauvegarder le profil."
+        );
+
+    }
+
+});
+
+
+/* ================================
+   🚪 DÉCONNEXION
+================================ */
+
+logoutButton.addEventListener("click", async () => {
+
+    try {
+
+        await signOut(auth);
+
+        alert("Déconnexion réussie 👋");
+
+        window.location.href = "Accueil-hg.html";
+
+
+    } catch (error) {
+
+        console.error(
+            "❌ Erreur déconnexion :",
+            error
+        );
+
+        alert(
+            "Erreur lors de la déconnexion."
+        );
+
+    }
+
+});
+
+
+/* ================================
+   🖼️ PHOTO DE PROFIL
+================================ */
+
+const profilePic =
+    document.getElementById("profilePic");
+
+const fileInput =
+    document.getElementById("fileInput");
+
+
+profilePic.onclick = () => {
+
+    fileInput.click();
+
+};
+
+
+fileInput.addEventListener("change", (event) => {
+
+    const file = event.target.files[0];
+
+
+    if (!file) return;
+
+
+    const reader = new FileReader();
+
+
+    reader.onload = function(e) {
+
+        profilePic.src = e.target.result;
+
+        localStorage.setItem(
+            "profilePic",
+            e.target.result
+        );
+
+    };
+
+
+    reader.readAsDataURL(file);
+
+});
+
+
+/* ================================
+   🔄 CHARGER PHOTO EXISTANTE
+================================ */
+
+const savedPhoto =
+    localStorage.getItem("profilePic");
+
+
+if (savedPhoto) {
+
+    profilePic.src = savedPhoto;
+
+}
+</script>
+
+</body>
+</html>
