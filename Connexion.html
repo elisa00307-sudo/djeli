@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Collège - Histoire-géo</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+}
+
+/* HEADER */
+
+header{
+    background-color: #0b3d91;
+    text-align: center;
+    padding: 30px 20px;
+    color: white;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+header h1{
+    background: white;
+    color: black;
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 12px;
+}
+
+/* TOP BUTTONS */
+
+.top-buttons{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px;
+}
+
+.top-buttons button{
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background: white;
+    font-weight: bold;
+}
+
+/* POPUP */
+
+.popup{
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content{
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.popup-content input{
+    padding: 10px;
+}
+
+/* PROFIL */
+
+.profile{
+    text-align: center;
+    margin: 20px;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.banner{
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin: 20px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+/* COURS */
+
+.container{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.classe{
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    width: 180px;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+}
+
+.hidden{
+    display: none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h1>Collège</h1>
+<p>Histoire - Géographie</p>
+</header>
+
+<!-- BOUTONS -->
+<div class="top-buttons" id="buttons">
+<button onclick="openSignup()">Inscription</button>
+<button onclick="openLogin()">Connexion</button>
+</div>
+
+<!-- PROFIL -->
+<div class="profile hidden" id="profile">
+
+<h2 id="name"></h2>
+<p id="school"></p>
+<p id="age"></p>
+
+<button onclick="editProfile()">Modifier profil</button>
+
+</div>
+
+<!-- BANNIÈRE SADHEL -->
+<div class="banner hidden" id="sadhel" onclick="openChatbot()">
+🤖 Discuter avec Sadhel - ton assistant scolaire
+</div>
+
+<!-- COURS -->
+<section class="container hidden" id="cours">
+
+<a href="6ème_hg.html" class="classe">6ème</a>
+<a href="5ème_hg.html" class="classe">5ème</a>
+<a href="4ème_hg.html" class="classe">4ème</a>
+<a href="3ème_hg.html" class="classe">3ème</a>
+
+</section>
+
+<!-- INSCRIPTION -->
+<div class="popup" id="signup">
+<div class="popup-content">
+
+<h3>Inscription</h3>
+
+<input id="prenom" placeholder="Prénom">
+<input id="nom" placeholder="Nom">
+<input id="schoolInput" placeholder="École">
+<input id="ageInput" placeholder="Âge">
+<input id="email" placeholder="Email">
+<input id="password" placeholder="Mot de passe">
+
+<button onclick="signup()">Créer compte</button>
+
+</div>
+</div>
+
+<!-- CONNEXION -->
+<div class="popup" id="login">
+<div class="popup-content">
+
+<h3>Connexion</h3>
+
+<input id="loginEmail" placeholder="Email">
+<input id="loginPassword" placeholder="Mot de passe">
+
+<button onclick="login()">Se connecter</button>
+
+</div>
+</div>
+
+<script>
+
+function showApp(){
+
+    document.getElementById("buttons").classList.add("hidden");
+    document.getElementById("cours").classList.remove("hidden");
+    document.getElementById("profile").classList.remove("hidden");
+    document.getElementById("sadhel").classList.remove("hidden");
+
+    let prenom = localStorage.getItem("prenom");
+    let nom = localStorage.getItem("nom");
+    let school = localStorage.getItem("school");
+    let age = localStorage.getItem("age");
+
+    document.getElementById("name").innerText = prenom + " " + nom;
+    document.getElementById("school").innerText = "🏫 " + school;
+    document.getElementById("age").innerText = "🎂 " + age + " ans";
+}
+
+/* INSCRIPTION */
+function signup(){
+
+    localStorage.setItem("prenom", document.getElementById("prenom").value);
+    localStorage.setItem("nom", document.getElementById("nom").value);
+    localStorage.setItem("school", document.getElementById("schoolInput").value);
+    localStorage.setItem("age", document.getElementById("ageInput").value);
+    localStorage.setItem("email", document.getElementById("email").value);
+    localStorage.setItem("password", document.getElementById("password").value);
+    localStorage.setItem("connected", "true");
+
+    closePopups();
+    showApp();
+}
+
+/* CONNEXION */
+function login(){
+
+    let email = document.getElementById("loginEmail").value;
+    let password = document.getElementById("loginPassword").value;
+
+    if(email === localStorage.getItem("email") &&
+       password === localStorage.getItem("password")){
+
+        localStorage.setItem("connected", "true");
+
+        closePopups();
+        showApp();
+
+    }else{
+        alert("Erreur connexion");
+    }
+}
+
+/* POPUPS */
+function openSignup(){
+    document.getElementById("signup").style.display = "flex";
+}
+
+function openLogin(){
+    document.getElementById("login").style.display = "flex";
+}
+
+function closePopups(){
+    document.getElementById("signup").style.display = "none";
+    document.getElementById("login").style.display = "none";
+}
+
+/* CHATBOT */
+function openChatbot(){
+    window.location.href = "chatbot.html";
+}
+
+/* EDIT PROFIL */
+function editProfile(){
+
+    let newSchool = prompt("Nouvelle école ?");
+    let newAge = prompt("Nouvel âge ?");
+
+    if(newSchool) localStorage.setItem("school", newSchool);
+    if(newAge) localStorage.setItem("age", newAge);
+
+    showApp();
+}
+
+/* AUTO LOGIN */
+if(localStorage.getItem("connected") === "true"){
+    showApp();
+}
+
+</script>
+
+</body>
+</html>

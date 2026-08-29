@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Collège - Djeli</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100%;
+        }
+
+
+        /* =========================
+           BODY
+        ========================= */
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f5f5f5;
+            color: #222;
+            overflow-x: hidden;
+
+            opacity: 0;
+            transform: translateY(20px) scale(0.98);
+
+            animation: pageFade 0.8s ease forwards;
+        }
+
+
+        @keyframes pageFade {
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+
+            background: #0b3d91;
+
+            min-height: 250px;
+
+            display: flex;
+            flex-direction: column;
+
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 45px 20px 50px;
+
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.18);
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+
+        /* petite lumière décorative */
+
+        header::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 260px;
+            height: 260px;
+
+            background: rgba(255, 255, 255, 0.06);
+
+            border-radius: 50%;
+
+            top: -150px;
+            left: -100px;
+        }
+
+
+        header::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 220px;
+            height: 220px;
+
+            background: rgba(255, 215, 0, 0.06);
+
+            border-radius: 50%;
+
+            bottom: -140px;
+            right: -80px;
+        }
+
+
+        /* =========================
+           TITRE HEADER
+        ========================= */
+
+        header h1 {
+
+            position: relative;
+            z-index: 2;
+
+            background: white;
+
+            color: #111;
+
+            margin: 0 0 18px;
+
+            padding: 14px 32px;
+
+            border-radius: 15px;
+
+            font-size: 42px;
+            font-weight: 600;
+
+            letter-spacing: -1px;
+
+            box-shadow:
+                0 8px 20px rgba(0, 0, 0, 0.12);
+
+            animation: titleAppear 0.8s ease both;
+        }
+
+
+        @keyframes titleAppear {
+
+            from {
+                opacity: 0;
+                transform: translateY(-15px) scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+
+        }
+
+
+        /* =========================
+           SOUS-TITRE
+        ========================= */
+
+        header p {
+
+            position: relative;
+            z-index: 2;
+
+            margin: 0;
+
+            color: white;
+
+            font-size: 20px;
+            font-weight: 400;
+
+            letter-spacing: 0.3px;
+
+            animation: subtitleAppear 1s ease both;
+            animation-delay: 0.15s;
+        }
+
+
+        @keyframes subtitleAppear {
+
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+
+        /* =========================
+           TITRE DE SECTION
+        ========================= */
+
+        .section-title {
+
+            text-align: center;
+
+            margin: 36px auto 10px;
+
+            padding: 0 20px;
+
+            color: #222;
+
+            font-size: 28px;
+            font-weight: 600;
+
+            letter-spacing: -0.5px;
+        }
+
+
+        .section-subtitle {
+
+            text-align: center;
+
+            color: #777;
+
+            font-size: 15px;
+
+            margin: 0 20px 30px;
+        }
+
+
+        /* =========================
+           CONTAINER
+        ========================= */
+
+        .container {
+
+            width: 100%;
+
+            max-width: 1050px;
+
+            margin: 0 auto;
+
+            padding: 15px 25px 70px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 25px;
+        }
+
+
+        /* =========================
+           CARTES
+        ========================= */
+
+        .classe {
+
+            position: relative;
+
+            min-height: 145px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background: white;
+
+            border-radius: 25px;
+
+            text-decoration: none;
+
+            color: #111;
+
+            font-size: 22px;
+            font-weight: 600;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.08);
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease,
+                background 0.3s ease,
+                color 0.3s ease;
+
+            overflow: hidden;
+        }
+
+
+        /* petite ligne décorative */
+
+        .classe::before {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            top: 0;
+
+            width: 100%;
+            height: 5px;
+
+            background: #0b3d91;
+
+            transition: height 0.3s ease;
+        }
+
+
+        /* numéro / petit cercle décoratif */
+
+        .classe::after {
+
+            content: "→";
+
+            position: absolute;
+
+            right: 20px;
+            bottom: 15px;
+
+            font-size: 18px;
+
+            opacity: 0;
+
+            transform: translateX(-8px);
+
+            transition:
+                opacity 0.3s ease,
+                transform 0.3s ease;
+        }
+
+
+        /* =========================
+           HOVER DES CARTES
+        ========================= */
+
+        .classe:hover {
+
+            transform:
+                translateY(-9px)
+                scale(1.02);
+
+            background: #0b3d91;
+
+            color: white;
+
+            box-shadow:
+                0 15px 35px rgba(11, 61, 145, 0.25);
+        }
+
+
+        .classe:hover::before {
+
+            height: 100%;
+
+            opacity: 0.08;
+        }
+
+
+        .classe:hover::after {
+
+            opacity: 1;
+
+            transform: translateX(0);
+        }
+
+
+        /* =========================
+           CLIC MOBILE
+        ========================= */
+
+        .classe:active {
+
+            transform: scale(0.97);
+
+            box-shadow:
+                0 5px 15px rgba(0, 0, 0, 0.12);
+        }
+
+
+        /* =========================
+           PROTECTION FIREBASE
+        ========================= */
+
+        body.auth-pending > * {
+
+            visibility: hidden;
+        }
+
+
+        body.auth-pending #access-blocked {
+
+            visibility: visible;
+        }
+
+
+        /* =========================
+           NON CONNECTÉ
+        ========================= */
+
+        body.auth-logged-out > *:not(#access-blocked) {
+
+            display: none !important;
+        }
+
+
+        body.auth-logged-out #access-blocked {
+
+            display: flex !important;
+        }
+
+
+        /* =========================
+           CONNECTÉ
+        ========================= */
+
+        body.auth-logged-in #access-blocked {
+
+            display: none !important;
+        }
+
+
+        /* =========================
+           ÉCRAN DE BLOCAGE
+        ========================= */
+
+        #access-blocked {
+
+            position: fixed;
+
+            inset: 0;
+
+            width: 100vw;
+            height: 100vh;
+
+            background: #f5f5f5;
+
+            display: none;
+
+            align-items: center;
+            justify-content: center;
+
+            z-index: 999999;
+
+            padding: 20px;
+        }
+
+
+        .blocked-box {
+
+            width: 100%;
+
+            max-width: 430px;
+
+            background: white;
+
+            padding: 45px 30px;
+
+            border-radius: 30px;
+
+            text-align: center;
+
+            box-shadow:
+                0 15px 45px rgba(0, 0, 0, 0.12);
+
+            animation: blockedAppear 0.5s ease;
+        }
+
+
+        @keyframes blockedAppear {
+
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+
+        }
+
+
+        .blocked-icon {
+
+            width: 80px;
+            height: 80px;
+
+            margin: 0 auto 20px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background: #eef3ff;
+
+            border-radius: 50%;
+
+            font-size: 38px;
+        }
+
+
+        .blocked-box h2 {
+
+            margin: 0 0 12px;
+
+            color: #0b3d91;
+
+            font-size: 26px;
+        }
+
+
+        .blocked-box p {
+
+            margin: 0 auto 28px;
+
+            max-width: 330px;
+
+            color: #666;
+
+            line-height: 1.7;
+
+            font-size: 15px;
+        }
+
+
+        /* =========================
+           BOUTON INSCRIPTION
+        ========================= */
+
+        #signup-btn {
+
+            border: none;
+
+            background: #0b3d91;
+
+            color: white;
+
+            padding: 14px 28px;
+
+            border-radius: 30px;
+
+            font-family: 'Poppins', sans-serif;
+
+            font-size: 15px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.25s ease,
+                background 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+
+        #signup-btn:hover {
+
+            background: #082f70;
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 8px 20px rgba(11, 61, 145, 0.25);
+        }
+
+
+        #signup-btn:active {
+
+            transform: scale(0.96);
+        }
+
+
+        /* =========================
+           TABLETTE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .container {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+                max-width: 700px;
+            }
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            header {
+
+                min-height: 235px;
+
+                padding:
+                    36px 20px
+                    42px;
+
+                border-bottom-left-radius: 28px;
+                border-bottom-right-radius: 28px;
+            }
+
+
+            header h1 {
+
+                font-size: 36px;
+
+                padding: 13px 28px;
+
+                border-radius: 15px;
+            }
+
+
+            header p {
+
+                font-size: 18px;
+            }
+
+
+            .section-title {
+
+                font-size: 27px;
+
+                margin-top: 34px;
+
+                margin-bottom: 8px;
+            }
+
+
+            .section-subtitle {
+
+                font-size: 14px;
+
+                margin-bottom: 25px;
+            }
+
+
+            .container {
+
+                grid-template-columns: 1fr;
+
+                gap: 28px;
+
+                padding:
+                    10px 55px
+                    60px;
+            }
+
+
+            .classe {
+
+                width: 100%;
+
+                min-height: 125px;
+
+                border-radius: 26px;
+
+                font-size: 23px;
+
+                box-shadow:
+                    0 10px 25px rgba(0, 0, 0, 0.08);
+            }
+
+
+            .classe::after {
+
+                display: none;
+            }
+
+
+            .blocked-box {
+
+                padding: 38px 25px;
+
+                border-radius: 27px;
+            }
+
+        }
+
+
+        /* =========================
+           TRÈS PETITS ÉCRANS
+        ========================= */
+
+        @media (max-width: 380px) {
+
+            header h1 {
+
+                font-size: 31px;
+
+                padding:
+                    12px 22px;
+            }
+
+
+            header p {
+
+                font-size: 16px;
+            }
+
+
+            .section-title {
+
+                font-size: 24px;
+            }
+
+
+            .container {
+
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+
+
+            .classe {
+
+                min-height: 115px;
+
+                font-size: 21px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body class="auth-pending">
+
+
+    <!-- =========================
+         ÉCRAN DE BLOCAGE
+    ========================= -->
+
+    <div id="access-blocked">
+
+        <div class="blocked-box">
+
+            <div class="blocked-icon">
+                🔒
+            </div>
+
+            <h2>
+                Inscris-toi d'abord
+            </h2>
+
+            <p>
+                Connecte-toi ou crée ton compte pour accéder
+                aux cours de Djeli.
+            </p>
+
+            <button id="signup-btn">
+                Créer mon compte
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header>
+
+        <h1>
+            Collège
+        </h1>
+
+        <p>
+            Choisis ton niveau
+        </p>
+
+    </header>
+
+
+    <!-- =========================
+         TITRE
+    ========================= -->
+
+    <h2 class="section-title">
+        📚 Sélectionne ta classe
+    </h2>
+
+    <p class="section-subtitle">
+        Choisis ton niveau pour commencer à apprendre
+    </p>
+
+
+    <!-- =========================
+         CLASSES
+    ========================= -->
+
+    <section class="container">
+
+        <a
+            href="6ème_hg.html"
+            class="classe"
+        >
+            6ème
+        </a>
+
+
+        <a
+            href="5ème_hg.html"
+            class="classe"
+        >
+            5ème
+        </a>
+
+
+        <a
+            href="4ème_hg.html"
+            class="classe"
+        >
+            4ème
+        </a>
+
+
+        <a
+            href="3ème_hg.html"
+            class="classe"
+        >
+            3ème
+        </a>
+
+    </section>
+
+<!-- =========================
+     FIREBASE AUTHENTIFICATION
+========================= -->
+
+<script type="module">
+
+import { auth } from "./js/firebase.js";
+
+import {
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
+
+const signupButton =
+    document.getElementById("signup-btn");
+
+
+onAuthStateChanged(auth, (user) => {
+
+    console.log(
+        user
+        ? "🟢 Utilisateur connecté"
+        : "🔴 Utilisateur déconnecté"
+    );
+
+
+    /* Firebase a terminé la vérification */
+
+    document.body.classList.remove("auth-pending");
+
+
+    if (user) {
+
+        /* =========================
+           🔓 CONNECTÉ
+        ========================= */
+
+        document.body.classList.add(
+            "auth-logged-in"
+        );
+
+        document.body.classList.remove(
+            "auth-logged-out"
+        );
+
+        console.log("🔓 Accès aux cours autorisé.");
+
+    } else {
+
+        /* =========================
+           🔒 NON CONNECTÉ
+        ========================= */
+
+        document.body.classList.add(
+            "auth-logged-out"
+        );
+
+        document.body.classList.remove(
+            "auth-logged-in"
+        );
+
+        console.log("🔒 Accès aux cours bloqué.");
+
+    }
+
+});
+
+
+/* =========================
+   BOUTON INSCRIPTION
+========================= */
+
+signupButton.addEventListener("click", () => {
+
+    window.location.href = "signup.html";
+
+});
+
+</script>
+
+
+</body>
+
+</html>
