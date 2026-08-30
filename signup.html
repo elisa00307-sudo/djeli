@@ -300,48 +300,83 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 
-/* =========================================
-   🌍 DÉTECTER AUTOMATIQUEMENT LE PAYS
-========================================= */
 
 async function detectCountry() {
 
-    try {
+    /* =========================================
+       🌍 DÉTECTION AUTOMATIQUE DU PAYS
+       Plusieurs services de secours
+    ========================================= */
 
-        const response = await fetch(
-            "https://ipapi.co/json/"
-        );
+    const services = [
 
-        if (!response.ok) {
+        async () => {
+            const response = await fetch(
+                "https://ipwho.is/"
+            );
 
-            throw new Error(
-                "Impossible de récupérer la localisation."
+            if (!response.ok) {
+                throw new Error("ipwho.is indisponible");
+            }
+
+            const data = await response.json();
+
+            if (data.success === false) {
+                throw new Error("Détection échouée");
+            }
+
+            return data.country;
+        },
+
+        async () => {
+            const response = await fetch(
+                "https://ipapi.co/json/"
+            );
+
+            if (!response.ok) {
+                throw new Error("ipapi.co indisponible");
+            }
+
+            const data = await response.json();
+
+            return data.country_name;
+        }
+
+    ];
+
+    for (const service of services) {
+
+        try {
+
+            const country = await service();
+
+            if (country && country.trim() !== "") {
+
+                console.log(
+                    "🌍 Pays détecté :",
+                    country
+                );
+
+                return country;
+
+            }
+
+        } catch (error) {
+
+            console.warn(
+                "⚠️ Service de localisation indisponible :",
+                error.message
             );
 
         }
 
-        const location = await response.json();
-
-        console.log(
-            "🌍 Pays détecté :",
-            location.country_name
-        );
-
-        return location.country_name || "Inconnu";
-
     }
 
-    catch (error) {
+    console.warn(
+        "⚠️ Aucun service n'a réussi à détecter le pays."
+    );
 
-        console.warn(
-            "⚠️ Détection du pays impossible :",
-            error
-        );
-
-        return "Inconnu";
-
-    }
-
+    return "Inconnu";
 }
 
 
