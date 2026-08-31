@@ -880,10 +880,10 @@
 
 
         /* =========================
-           TÉLÉCHARGEMENT
+           TÉLÉCHARGEMENT COMPATIBLE
         ========================= */
 
-        async function downloadFile(
+        function downloadFile(
             url,
             fileName,
             button
@@ -893,64 +893,53 @@
                 button.innerHTML;
 
 
+            /*
+             * On utilise directement le navigateur.
+             * Pas de fetch().
+             * Pas de blob().
+             * Pas de CORS à gérer.
+             */
+
             try {
 
                 button.disabled = true;
 
                 button.innerHTML =
-                    "⏳ Téléchargement...";
-
-
-                const response =
-                    await fetch(url, {
-                        mode: "cors"
-                    });
-
-
-                if (!response.ok) {
-
-                    throw new Error(
-                        "Impossible de récupérer l'image."
-                    );
-
-                }
-
-
-                const blob =
-                    await response.blob();
-
-
-                const blobUrl =
-                    URL.createObjectURL(blob);
+                    "⏳ Préparation...";
 
 
                 const link =
                     document.createElement("a");
 
 
-                link.href = blobUrl;
+                link.href = url;
 
                 link.download = fileName;
+
+                link.target = "_blank";
+
+                link.rel = "noopener";
+
 
                 link.style.display = "none";
 
 
                 document.body.appendChild(link);
 
+
                 link.click();
+
 
                 link.remove();
 
 
-                setTimeout(() => {
-
-                    URL.revokeObjectURL(blobUrl);
-
-                }, 1000);
-
+                /*
+                 * On considère que le navigateur
+                 * a accepté la demande.
+                 */
 
                 button.innerHTML =
-                    "✅ Fiche téléchargée !";
+                    "✅ Téléchargement lancé !";
 
 
                 setTimeout(() => {
@@ -971,22 +960,21 @@
                 );
 
 
-                button.innerHTML =
-                    "⚠️ Ouvrir la fiche";
-
+                /*
+                 * Fallback :
+                 * on ouvre directement l'image.
+                 */
 
                 button.disabled = false;
 
+                button.innerHTML =
+                    "📂 Ouvrir la fiche";
 
-                /*
-                 * Si le téléchargement automatique
-                 * est bloqué, on ouvre directement
-                 * l'image dans un nouvel onglet.
-                 */
 
                 window.open(
                     url,
-                    "_blank"
+                    "_blank",
+                    "noopener"
                 );
 
 
